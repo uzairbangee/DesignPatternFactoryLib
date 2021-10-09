@@ -13,15 +13,6 @@ abstract class PanacloudQueryCreator {
 }
 
 class PanacloudQueryConcreteCreator extends PanacloudQueryCreator {
-    private static instance: PanacloudQueryConcreteCreator;
-
-    public static getInstance(): PanacloudQueryConcreteCreator {
-        if (!PanacloudQueryConcreteCreator.instance) {
-            PanacloudQueryConcreteCreator.instance = new PanacloudQueryConcreteCreator();
-        }
-
-        return PanacloudQueryConcreteCreator.instance;
-    }
 
     public api(type: Language): ApiQuery {
         switch(type){

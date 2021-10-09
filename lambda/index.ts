@@ -12,11 +12,11 @@ export async function handler(event: APIGatewayProxyEvent, context: Context) {
         console.log("event", event);
 
         const qClient = new PanacloudQueryConcreteCreator();
-        const result = await qClient.api(Language.Gremlin).createApi("Sami")
-        console.log("result ", result)
+        // const gremlin_result = await qClient.api(Language.Gremlin).createApi("Sami")
+        // console.log("result ", gremlin_result)
 
-        const new_result = await qClient.user(Language.Cypher).createUser("Abdul");
-        console.log("new_result ", new_result)
+        const cypher_result = await qClient.user(Language.Cypher).createUser("uzair");
+        console.log("new_result ", cypher_result)
 
         return {
             statusCode: 200,

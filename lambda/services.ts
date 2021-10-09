@@ -41,6 +41,7 @@ export const createAPIGremlin = async (name: string) => {
     try{
         console.log("g ", g);
         const user = await g.addV('user')
+                        .property(id, name)
                         .property('name', name)
                         .project("name")
                         .by("name")
@@ -56,8 +57,8 @@ export const createAPIGremlin = async (name: string) => {
 
 export const createApiCypher = async (name: string) => {
     try{
-        await axios.post('HTTPS://' + process.env.NEPTUNE_ENDPOINT + ':8182/openCypher', `query=CREATE (n:user { name: '${name}' })`);
-        const fetch: any = await axios.post('HTTPS://' + process.env.NEPTUNE_ENDPOINT + ':8182/openCypher', `query=MATCH (n:user { name: '${name}' }) RETURN n`)
+        await axios.post('HTTPS://' + process.env.NEPTUNE_ENDPOINT + ':8182/openCypher', `query=CREATE (n:user { id: '${name}' })`);
+        const fetch: any = await axios.post('HTTPS://' + process.env.NEPTUNE_ENDPOINT + ':8182/openCypher', `query=MATCH (n:user { id: '${name}' }) RETURN n`)
 
         console.log("fetch ", fetch.data);
         return fetch.data.results;
